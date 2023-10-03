@@ -1,0 +1,14 @@
+listen: ':9010'
+gin:
+  mode: 'debug'
+  log_mode: 'console'
+mysql:
+  dsn: 'root:asdQWE123#@tcp(127.0.0.1:3306)/task_monitor?charset=utf8mb4&parseTime=True&loc=Local'
+  max_idle_conn: 10
+  max_open_conn: 100
+redis:
+  addr: '127.0.0.1:6379'
+  password: '5e10Xgv2OTv9gMNPSA9jS45ne9lCvearWVpXRslyjI29lqI7xP4pYVSA196exJ=d6C7='
+  db: 0
+  pool_size: 500
+  min_idle_conns: 10

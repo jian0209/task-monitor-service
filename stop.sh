@@ -1,0 +1,1 @@
+kill `pgrep -f "task-monitor-service"`

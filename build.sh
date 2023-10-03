@@ -1,0 +1,1 @@
+go build -a -o task-monitor-service

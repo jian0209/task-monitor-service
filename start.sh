@@ -1,0 +1,1 @@
+nohup ./task-monitor-service >> run.log 2>&1 &
