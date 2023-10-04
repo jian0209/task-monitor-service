@@ -10,7 +10,6 @@ import (
 	"github.com/go-redis/redis/v7"
 	"github.com/jian0209/task-monitor-service/handler"
 	"github.com/jian0209/task-monitor-service/utils"
-	"github.com/jian0209/task-monitor-service/websocket"
 	"github.com/polevpn/elog"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -55,6 +54,7 @@ func initRedis() error {
 
 func initGinRouter() (*gin.Engine, error) {
 	userHandler := &handler.UserHandler{}
+	websocketHandler := &handler.WsHandler{}
 
 	gin.SetMode(utils.Config.Get("gin.mode").AsStr("debug"))
 	ginLogFile := utils.Config.Get("gin.log_mode").AsStr("console")
@@ -70,16 +70,7 @@ func initGinRouter() (*gin.Engine, error) {
 	r.ForwardedByClientIP = true
 	r.SetTrustedProxies([]string{"127.0.0.1"})
 
-	r.GET("/ws", func(c *gin.Context) {
-		handler := websocket.NewRequestHandler()
-		server := websocket.NewHttpServer(handler)
-		err := server.Listen("127.0.0.1:9011")
-
-		if err != nil {
-			elog.Error("start server fail:", err)
-			return
-		}
-	})
+	r.POST("/ws", websocketHandler.OnConnected)
 
 	r.POST("/api/user/register", userHandler.Register)
 	r.POST("/api/user/login", userHandler.Login)
