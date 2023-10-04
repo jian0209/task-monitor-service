@@ -158,11 +158,6 @@ func (uh *UserHandler) Login(c *gin.Context) {
 	returnResult := make(map[string]interface{})
 
 	returnResult["token"] = token
-	returnResult["username"] = result.Username
-	returnResult["email"] = result.Email
-	returnResult["status"] = result.Status
-	returnResult["updated_at"] = result.Updated_At
-	returnResult["created_at"] = result.Created_At
 
 	utils.Response200(c, returnResult)
 }

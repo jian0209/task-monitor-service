@@ -7,6 +7,8 @@ const (
 	RESP_USER_EMAIL_ERROR    = 1002
 	RESP_USER_PASSWORD_ERROR = 1003
 	RESP_USER_EXIST_CODE     = 1004
+	RESP_TOKEN_INVALID       = 1005
+	RESP_CHECK_LOGIN_FAILED  = 1006
 	RESP_INTERNAL_ERROR_CODE = 1099
 )
 
@@ -17,6 +19,8 @@ var RESPONSE_TEXT = map[int]string{
 	1002: "invalid email",
 	1003: "invalid password",
 	1004: "user exist",
+	1005: "token invalid",
+	1006: "check login failed",
 	1099: "internal error",
 }
 

@@ -21,10 +21,6 @@ func (h *WsHandler) OnConnected(c *gin.Context) {
 	utils.Response200(c, utils.RESP_SUCCESS_CODE)
 }
 
-// func (h *WsHandler) sendNotification(notification string) error {
-// 	return nil
-// }
-
 func eventCallBack(av *anyvalue.AnyValue) {
 	json, _ := av.EncodeJson()
 	// send to server
